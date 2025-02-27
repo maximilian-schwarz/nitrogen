@@ -40,7 +40,8 @@ export default defineNuxtConfig({
     'pinia-plugin-persistedstate/nuxt',
     '@vueuse/nuxt',
     '@nuxt/eslint',
-    '@nuxt/icon'
+    '@nuxt/icon',
+    'nuxt-multi-cache'
   ],
 
   icon: {
@@ -53,10 +54,25 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
 
+  multiCache: {
+    cdn: {
+      enabled: true,
+      cacheControlHeader: 'Cache-Control'
+    }
+  },
+
+  nitro: {
+    compressPublicAssets: {
+      brotli: true
+    }
+  },
+
   components: [
     {
       path: '@/components',
       pathPrefix: false
     }
-  ]
+  ],
+
+  compatibilityDate: '2025-02-27'
 });
